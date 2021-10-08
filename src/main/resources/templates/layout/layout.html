@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<meta charset="ISO-8859-1">
+<title th:text="#{application.title}"></title>
+
+<!-- BS5 css -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+
+<!-- DataTables BS5 css 
+<link
+	href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css"
+	rel="stylesheet"> -->
+
+<!-- DataTables css -->
+<link
+	href="http://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"
+	rel="stylesheet">
+
+<!-- Select 2 css
+<link
+	href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"
+	rel="stylesheet" />
+	
+<!-- Jquery-ui -->
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
+
+<!-- Meus css -->
+<link th:href="@{/css/kiosco.css}" rel="stylesheet">
+
+<link rel="icon" type="image/png" th:href="@{/img/chingolo.png}">
+
+</head>
+<body>
+
+	<!-- navbar -->
+	<!-- Barra de Navegaci�n -->
+	<nav class="navbar navbar-expand-sm navbar-dark p-0 rcorners"
+		style="background-color: #4B636E; height: 40px; border-top-left-radius: 0.35em; border-top-right-radius: 0.35em; ">
+		<!-- Brand -->
+		<div class="container-fluid">
+			<a class="navbar-brand me-auto" href="#" style="display: inline-flex;" >
+				<img alt="logo" th:src="@{/img/chingolo.png}" width="7%" height="7%"
+							 fill="none" stroke="currentColor"
+							stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+							class="d-flex my-auto" />
+				<span class="nav-link active text-responsive text-white-50" aria-current="page"
+							th:text="#{titulo}"></span>
+			</a>
+
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+				aria-controls="navbarNavDropdown" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<i class="fas fa-bars small"></i>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarNavDropdown">
+				<!-- Links -->
+				<ul class="navbar-nav ms-auto">
+
+					<!-- Dropdown -->
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#"
+						id="navbarDropdownMenuLink" role="button"
+						data-bs-toggle="dropdown" aria-expanded="false"> 
+						<i class="fas fa-cog"></i>
+					</a>
+						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+							<li><a class="dropdown-item" href="#">Action</a></li>
+							<li><a class="dropdown-item" href="#">Another action</a></li>
+							<li><a class="dropdown-item" href="#">Something else
+									here</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
+
+	</nav>
+	<!-- Messages -->
+	<div class="alert alert-success alert-dismissible fade show"
+		role="alert" th:if="${success != null}">
+		<button type="button" class="btn-close" data-bs-dismiss="alert"
+			aria-label="Close"></button>
+		<i class="fas fa-check-circle"></i> &nbsp; <span th:text="${success}"></span>
+	</div>
+	<div class="alert alert-warning alert-dismissible fade show"
+		role="alert" th:if="${warning != null}">
+		<button type="button" class="btn-close" data-bs-dismiss="alert"
+			aria-label="Close"></button>
+		<i class="fas fa-info-circle"></i> &nbsp; <span th:text="${warning}"></span>
+	</div>
+	<div class="alert alert-danger alert-dismissible fade show"
+		role="alert" th:if="${danger != null}">
+		<button type="button" class="btn-close" data-bs-dismiss="alert"
+			aria-label="Close"></button>
+		<i class="fas fa-exclamation-triangle"></i> &nbsp; <span
+			th:text="${danger}"></span>
+	</div>
+	<div id="dangerMsg"
+		class="alert alert-danger alert-dismissible fade show" hidden="true"
+		role="alert">
+		<button type="button" class="btn-close" data-bs-dismiss="alert"
+			aria-label="Close"></button>
+		<span
+			th:text="'Debes guardar el contenido antes de añadir recursos...'"></span>
+	</div>
+	<!-- ./Messages -->
+
+	<!-- MAIN CONTENT -->
+	<div layout:fragment="corpo" class="corpo">
+		<div>Conteúdo principal das páginas</div>
+	</div>
+
+	<!-- JS -->
+
+	<!-- BS5 & Popper js bundle -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+		crossorigin="anonymous"></script>
+
+	<!-- Font Awesome -->
+	<script src="https://kit.fontawesome.com/fc3264b9fe.js"
+		crossorigin="anonymous"></script>
+
+	<!-- JQuery -->
+	<script type="text/javascript" th:src="@{/js/jquery-3.6.0.min.js}"></script>
+
+	<!-- DataTables -->
+	<script
+		src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"
+		crossorigin="anonymous"></script>
+
+	<!-- DataTables BS5 Js 
+		<script
+		src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"
+		crossorigin="anonymous"></script> -->
+
+	<!-- Select 2 JS
+	<script
+		src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+		
+		<!-- Jquery-ui -->
+	<script th:src="@{/js/jquery-ui.min.js}"></script>
+
+	<!-- Sweet Alert 2 -->
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+	<!-- 	MEUS JS -->
+	<script th:replace=":: js"></script>
+	<script>
+		setInterval('cerrar()', 5000);
+
+		function cerrar() {
+			$(".alert").delay(500).slideUp(500, function() {
+				$(this).hide();
+			});
+
+		}
+	</script>
+
+</body>
+</html>

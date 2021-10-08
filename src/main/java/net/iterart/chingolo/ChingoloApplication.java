@@ -1,0 +1,13 @@
+package net.iterart.chingolo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class ChingoloApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(ChingoloApplication.class, args);
+	}
+
+}
