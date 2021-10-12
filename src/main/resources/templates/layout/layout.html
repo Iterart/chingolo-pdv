@@ -32,26 +32,46 @@
 <link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
 
 <!-- Meus css -->
+<meta name="theme-color" content="#7952b3">
+
+
+<style>
+.bd-placeholder-img {
+	font-size: 1.125rem;
+	text-anchor: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+@media ( min-width : 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+	}
+}
+</style>
 <link th:href="@{/css/kiosco.css}" rel="stylesheet">
+<link th:href="@{/css/sidebars.css}" rel="stylesheet">
 
 <link rel="icon" type="image/png" th:href="@{/img/chingolo.png}">
 
 </head>
 <body>
 
-	<!-- navbar -->
+
 	<!-- Barra de Navegaci�n -->
-	<nav class="navbar navbar-expand-sm navbar-dark p-0 rcorners"
-		style="background-color: #4B636E; height: 40px; border-top-left-radius: 0.35em; border-top-right-radius: 0.35em; ">
+	<nav class="navbar navbar-expand-sm navbar-dark p-3"
+		style="background-color: #454A56; height: 2.9rem;">
 		<!-- Brand -->
-		<div class="container-fluid">
-			<a class="navbar-brand me-auto" href="#" style="display: inline-flex;" >
-				<img alt="logo" th:src="@{/img/chingolo.png}" width="7%" height="7%"
-							 fill="none" stroke="currentColor"
-							stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-							class="d-flex my-auto" />
-				<span class="nav-link active text-responsive text-white-50" aria-current="page"
-							th:text="#{titulo}"></span>
+		<div class="container-fluid w-100">
+			<a class="navbar-brand me-auto" href="#"
+				style="display: inline-flex;">
+				<img alt="logo" th:src="@{/img/chingolo.png}" width="8%" height="8%"
+					fill="none" stroke="currentColor" stroke-width="2"
+					stroke-linecap="round" stroke-linejoin="round"
+					class="d-flex my-auto" /> <span
+					class="nav-link active text-responsive text-white-50"
+					aria-current="page" th:text="#{titulo}"></span>
 			</a>
 
 			<button class="navbar-toggler" type="button"
@@ -66,57 +86,137 @@
 				<ul class="navbar-nav ms-auto">
 
 					<!-- Dropdown -->
-					<li class="nav-item dropdown"><a
-						class="nav-link dropdown-toggle" href="#"
-						id="navbarDropdownMenuLink" role="button"
-						data-bs-toggle="dropdown" aria-expanded="false"> 
-						<i class="fas fa-cog"></i>
-					</a>
-						<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-							<li><a class="dropdown-item" href="#">Action</a></li>
-							<li><a class="dropdown-item" href="#">Another action</a></li>
-							<li><a class="dropdown-item" href="#">Something else
-									here</a></li>
-						</ul></li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#"
+							id="navbarDropdownMenuLink" role="button"
+							data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="fas fa-cog"></i>
+						</a>
+						<ul class="dropdown-menu dropdown-menu-end"
+							aria-labelledby="navbarDropdownMenuLink">
+							<li>
+								<a class="dropdown-item" href="#">Action</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">Another action</a>
+							</li>
+							<li>
+								<a class="dropdown-item" href="#">Something else here</a>
+							</li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</div>
-
 	</nav>
-	<!-- Messages -->
-	<div class="alert alert-success alert-dismissible fade show"
-		role="alert" th:if="${success != null}">
-		<button type="button" class="btn-close" data-bs-dismiss="alert"
-			aria-label="Close"></button>
-		<i class="fas fa-check-circle"></i> &nbsp; <span th:text="${success}"></span>
-	</div>
-	<div class="alert alert-warning alert-dismissible fade show"
-		role="alert" th:if="${warning != null}">
-		<button type="button" class="btn-close" data-bs-dismiss="alert"
-			aria-label="Close"></button>
-		<i class="fas fa-info-circle"></i> &nbsp; <span th:text="${warning}"></span>
-	</div>
-	<div class="alert alert-danger alert-dismissible fade show"
-		role="alert" th:if="${danger != null}">
-		<button type="button" class="btn-close" data-bs-dismiss="alert"
-			aria-label="Close"></button>
-		<i class="fas fa-exclamation-triangle"></i> &nbsp; <span
-			th:text="${danger}"></span>
-	</div>
-	<div id="dangerMsg"
-		class="alert alert-danger alert-dismissible fade show" hidden="true"
-		role="alert">
-		<button type="button" class="btn-close" data-bs-dismiss="alert"
-			aria-label="Close"></button>
-		<span
-			th:text="'Debes guardar el contenido antes de añadir recursos...'"></span>
-	</div>
-	<!-- ./Messages -->
 
-	<!-- MAIN CONTENT -->
-	<div layout:fragment="corpo" class="corpo">
-		<div>Conteúdo principal das páginas</div>
-	</div>
+	<main>
+		<div class="d-flex flex-column flex-shrink-0"
+			style="background-color: #282C34;">
+
+			<ul class="nav nav-pills nav-flush flex-column text-center">
+				<li class="nav-item">
+					<a href="#" class="nav-link py-3 text-white border-bottom"
+						aria-current="page" title="Caja" data-bs-toggle="tooltip"
+						data-bs-placement="right">
+						<i class="fas fa-lg fa-cash-register text-white-50"></i> 
+						<br />
+						<small>Caja</small>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-link py-3 text-white border-bottom"
+						aria-current="page" title="Home" data-bs-toggle="tooltip"
+						data-bs-placement="right">
+						<i class="fas fa-lg fa-dollar-sign text-white-50"></i> 
+						<br />
+						<small>Ventas</small>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-link py-3 text-white border-bottom"
+						aria-current="page" title="Home" data-bs-toggle="tooltip"
+						data-bs-placement="right">
+						<i class="fas fa-lg fa-tag text-white-50"></i> 
+						<br />
+						<small>Productos</small>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-link py-3 text-white border-bottom"
+						aria-current="page" title="Home" data-bs-toggle="tooltip"
+						data-bs-placement="right">
+						<i class="fas fa-lg fa-shopping-basket text-white-50"></i>
+						<br />
+						<small>Compras</small>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-link py-3 text-white border-bottom"
+						aria-current="page" title="Home" data-bs-toggle="tooltip"
+						data-bs-placement="right">
+						<i class="fas fa-lg fa-users text-white-50"></i>
+						<br />
+						<small>Clientes</small>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-link py-3 text-white border-bottom"
+						aria-current="page" title="Home" data-bs-toggle="tooltip"
+						data-bs-placement="right">
+						<i class="fas fa-lg fa-truck-moving text-white-50"></i>
+						<br />
+						<small>Proveedores</small>
+					</a>
+				</li>
+				<li>
+					<a href="#" class="nav-link py-3 text-white border-bottom"
+						aria-current="page" title="Home" data-bs-toggle="tooltip"
+						data-bs-placement="right">
+						<i class="fas fa-lg fa-id-badge text-white-50"></i>
+						<br />
+						<small>Cajeros</small>
+					</a>
+				</li>
+			</ul>
+		</div>
+
+		<!-- Messages -->
+		<div class="alert alert-success alert-dismissible fade show"
+			role="alert" th:if="${success != null}">
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+			<i class="fas fa-check-circle"></i> &nbsp; <span th:text="${success}"></span>
+		</div>
+		<div class="alert alert-warning alert-dismissible fade show"
+			role="alert" th:if="${warning != null}">
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+			<i class="fas fa-info-circle"></i> &nbsp; <span th:text="${warning}"></span>
+		</div>
+		<div class="alert alert-danger alert-dismissible fade show"
+			role="alert" th:if="${danger != null}">
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+			<i class="fas fa-exclamation-triangle"></i> &nbsp; <span
+				th:text="${danger}"></span>
+		</div>
+		<div id="dangerMsg"
+			class="alert alert-danger alert-dismissible fade show" hidden="true"
+			role="alert">
+			<button type="button" class="btn-close" data-bs-dismiss="alert"
+				aria-label="Close"></button>
+			<span
+				th:text="'Debes guardar el contenido antes de añadir recursos...'"></span>
+		</div>
+		<!-- ./Messages -->
+
+		<!-- MAIN CONTENT -->
+		<div layout:fragment="corpo" class="corpo">
+			<div>Conteúdo principal das páginas</div>
+		</div>
+
+	</main>
 
 	<!-- JS -->
 
