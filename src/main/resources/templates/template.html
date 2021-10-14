@@ -3,24 +3,16 @@
 	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout/layout}">
 <head>
 <meta charset="utf-8">
-<title th:text="#{application.title}"></title>
+<title th:text="#{titulo}"></title>
 </head>
 
 <body>
 	<div layout:fragment="corpo">
 
-		<div class="container mt-4 ">
-			<span
-				th:text="${titulo}"
-				class="badge text-wrap fs-6"
-				style="width: 20rem; box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.05); background-color: #0086C3; margin-left: 25px;">
-				 </span>
-			<div class="recuadro"
-				 style="box-shadow: 10px 10px 0 rgba(0, 0, 0, 0.05); border-color: #0086C3;">
-				
-				...
-				
-			</div>
+		<div class="text-white etiqueta">
+			<span class="text-responsive"> 
+			<span th:text="'Plantilla'"></span> 
+			</span>
 		</div>
 	</div>
 
