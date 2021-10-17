@@ -19,8 +19,16 @@
 	rel="stylesheet"> -->
 
 <!-- DataTables css -->
+
+   
+   
+
 <link
-	href="http://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css"
+	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
+	rel="stylesheet">
+	
+	<link
+	href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css"
 	rel="stylesheet">
 
 <!-- Select 2 css
@@ -66,7 +74,7 @@
 		<div class="container-fluid w-100">
 			<a class="navbar-brand me-auto" href="#"
 				style="display: inline-flex;">
-				<img alt="logo" th:src="@{/img/chingolo.png}" width="8%" height="8%"
+				<img alt="logo" th:src="@{/img/logo.png}" width="8%" height="8%"
 					fill="none" stroke="currentColor" stroke-width="2"
 					stroke-linecap="round" stroke-linejoin="round"
 					class="d-flex my-auto" /> 
@@ -137,7 +145,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="#" class="nav-link py-3 text-white border-bottom"
+					<a th:href="@{/productos/listado}" class="nav-link py-3 text-white border-bottom"
 						aria-current="page" title="Home" data-bs-toggle="tooltip"
 						data-bs-placement="right">
 						<i class="fas fa-lg fa-tag text-info-50"></i> 
@@ -250,10 +258,10 @@
 		src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"
 		crossorigin="anonymous"></script>
 
-	<!-- DataTables BS5 Js 
+	<!-- DataTables BS5 Js -->
 		<script
 		src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"
-		crossorigin="anonymous"></script> -->
+		crossorigin="anonymous"></script> 
 
 	<!-- Select 2 JS
 	<script

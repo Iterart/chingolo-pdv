@@ -31,7 +31,7 @@ public class Producto implements Serializable {
 	@Column(name = "id")
 	private Long numero;
 
-	@Column(name = "bar_code", nullable = false, unique = true, length = 13)
+	@Column(name = "bar_code", length = 13)
 	private String codigoBarras;
 
 	@Column(name = "descr", nullable = false, unique = true, length = 110)

@@ -10,9 +10,21 @@
 	<div layout:fragment="corpo">
 
 		<div class="text-white etiqueta">
-			<span class="text-responsive"> 
-			<span th:text="'Plantilla'"></span> 
-			</span>
+			<div class="row">
+				<div class="col-sm-9">
+					<span class="text-responsive"> <span
+						th:text="#{titulo}"></span>
+					</span>
+				</div>
+				<div class="col-sm-3 text-right">
+					<a id="btn-new" class="btn btn-info btn-sm text-white sombra-boton"
+						th:text="Nuevo"></a>
+					<a id="btn-edi" class="btn btn-info btn-sm text-white sombra-boton" 
+						th:text="Editar"></a>
+					<a id="btn-del" class="btn btn-info btn-sm text-white sombra-boton" 
+						th:text="Eliminar"></a>
+				</div>
+			</div>
 		</div>
 	</div>
 
