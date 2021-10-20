@@ -46,6 +46,14 @@ i {
 	text-shadow: 1px 1px black;
 }
 
+.modal-header {
+	background-color: #858A96;	
+	font-weight: 600; 
+	font-size: 1.7em;
+	color: #fff;
+	text-shadow: 1px 1px black;
+}
+
 .sombra-boton {
 	box-shadow: 1px 1px black; 
 	width: 5.0rem;

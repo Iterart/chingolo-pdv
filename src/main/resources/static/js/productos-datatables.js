@@ -19,7 +19,7 @@ $(document).ready(function() {
 		lengthMenu: [5, 10, 15, 20, 25, 30],
 		language: {
 			"search": "Buscar:",
-			"processing": "Procesando...",
+			"processing": "Recuperando información...",
 			"lengthMenu": "Mostrar _MENU_ registros",
 			"zeroRecords": "No se encontraron registros coincidentes...",
 			"emptyTable": "No hay datos en la tabla",
@@ -117,4 +117,15 @@ $(document).ready(function() {
 			}
 		}
 	});
+});
+
+/* 
+ *
+ *  Botones CRUD
+ *
+ */ 
+
+$("#btn-new").on("click", () => {
+	let tareaModal = new bootstrap.Modal(document.getElementById("productosModal"), {backdrop: 'static', keyboard: false});
+    tareaModal.show()
 });
