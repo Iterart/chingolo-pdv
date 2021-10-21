@@ -13,21 +13,12 @@
 	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
 	crossorigin="anonymous">
 
-<!-- DataTables BS5 css 
-<link
-	href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css"
-	rel="stylesheet"> -->
-
-<!-- DataTables css -->
-
-   
-   
 
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css"
 	rel="stylesheet">
-	
-	<link
+
+<link
 	href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css"
 	rel="stylesheet">
 
@@ -77,12 +68,14 @@
 				<img alt="logo" th:src="@{/img/logo.png}" width="8%" height="8%"
 					fill="none" stroke="currentColor" stroke-width="2"
 					stroke-linecap="round" stroke-linejoin="round"
-					class="d-flex my-auto" /> 
-					<span class="nav-link active text-responsive" aria-current="page" >
-						<span th:text="#{titulo}" class="text-white" style="font-stretch: extra-condensed; font-weight: 800;"></span>
-						<span th:text="#{subtitulo}" style="color: #61DAFB; font-stretch: extra-condensed; font-weight: 800;"></span>
-					</span>
-					
+					class="d-flex my-auto" /> <span
+					class="nav-link active text-responsive" aria-current="page">
+					<span th:text="#{titulo}" class="text-white"
+					style="font-stretch: extra-condensed; font-weight: 800;"></span> <span
+					th:text="#{subtitulo}"
+					style="color: #61DAFB; font-stretch: extra-condensed; font-weight: 800;"></span>
+				</span>
+
 			</a>
 
 			<button class="navbar-toggler" type="button"
@@ -97,25 +90,19 @@
 				<ul class="navbar-nav ms-auto">
 
 					<!-- Dropdown -->
-					<li class="nav-item dropdown">
-						<a class="nav-link dropdown-toggle" href="#"
+					<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" href="#"
 							id="navbarDropdownMenuLink" role="button"
 							data-bs-toggle="dropdown" aria-expanded="false">
 							<i class="fas fa-cog"></i>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end"
-							aria-labelledby="navbarDropdownMenuLink">
-							<li>
-								<a class="dropdown-item" href="#">Action</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="#">Another action</a>
-							</li>
-							<li>
-								<a class="dropdown-item" href="#">Something else here</a>
-							</li>
-						</ul>
-					</li>
+						aria-labelledby="navbarDropdownMenuLink">
+							<li><a class="dropdown-item" href="#">Action</a></li>
+							<li><a class="dropdown-item" href="#">Another action</a></li>
+							<li><a class="dropdown-item" href="#">Something else
+									here</a></li>
+					</ul></li>
 				</ul>
 			</div>
 		</div>
@@ -126,78 +113,48 @@
 			style="background-color: #282C34;">
 
 			<ul class="nav nav-pills nav-flush flex-column text-center">
-				<li class="nav-item">
-					<a href="#" class="nav-link py-3 text-white border-bottom"
-						aria-current="page" title="Caja" data-bs-toggle="tooltip"
-						data-bs-placement="right">
-						<i class="fas fa-lg fa-cash-register text-info-50"></i> 
-						<br />
-						<small>Caja</small>
-					</a>
-				</li>
-				<li>
-					<a href="#" class="nav-link py-3 text-white border-bottom"
+				<li class="nav-item"><a href="#"
+						class="nav-link py-3 text-white border-bottom" aria-current="page"
+						title="Caja" data-bs-toggle="tooltip" data-bs-placement="right">
+						<i class="fas fa-lg fa-cash-register text-info-50"></i> <br /> <small>Caja</small>
+					</a></li>
+				<li><a href="#" class="nav-link py-3 text-white border-bottom"
 						aria-current="page" title="Home" data-bs-toggle="tooltip"
 						data-bs-placement="right">
-						<i class="fas fa-lg fa-dollar-sign text-info-50"></i> 
-						<br />
-						<small>Ventas</small>
-					</a>
-				</li>
-				<li>
-					<a th:href="@{/productos/listado}" class="nav-link py-3 text-white border-bottom"
+						<i class="fas fa-lg fa-dollar-sign text-info-50"></i> <br /> <small>Ventas</small>
+					</a></li>
+				<li><a th:href="@{/productos/listado}"
+						class="nav-link py-3 text-white border-bottom" aria-current="page"
+						title="Home" data-bs-toggle="tooltip" data-bs-placement="right">
+						<i class="fas fa-lg fa-tag text-info-50"></i> <br /> <small>Productos</small>
+					</a></li>
+				<li><a href="#" class="nav-link py-3 text-white border-bottom"
 						aria-current="page" title="Home" data-bs-toggle="tooltip"
 						data-bs-placement="right">
-						<i class="fas fa-lg fa-tag text-info-50"></i> 
-						<br />
-						<small>Productos</small>
-					</a>
-				</li>
-				<li>
-					<a href="#" class="nav-link py-3 text-white border-bottom"
-						aria-current="page" title="Home" data-bs-toggle="tooltip"
-						data-bs-placement="right">
-						<i class="fas fa-lg fa-shopping-basket text-info-50"></i>
-						<br />
+						<i class="fas fa-lg fa-shopping-basket text-info-50"></i> <br />
 						<small>Compras</small>
-					</a>
-				</li>
-				<li>
-					<a href="#" class="nav-link py-3 text-white border-bottom"
+					</a></li>
+				<li><a href="#" class="nav-link py-3 text-white border-bottom"
 						aria-current="page" title="Home" data-bs-toggle="tooltip"
 						data-bs-placement="right">
-						<i class="fas fa-lg fa-users text-info-50"></i>
-						<br />
-						<small>Clientes</small>
-					</a>
-				</li>
-				<li>
-					<a href="#" class="nav-link py-3 text-white border-bottom"
+						<i class="fas fa-lg fa-users text-info-50"></i> <br /> <small>Clientes</small>
+					</a></li>
+				<li><a href="#" class="nav-link py-3 text-white border-bottom"
 						aria-current="page" title="Home" data-bs-toggle="tooltip"
 						data-bs-placement="right">
-						<i class="fas fa-lg fa-truck-moving text-info-50"></i>
-						<br />
-						<small>Proveedores</small>
-					</a>
-				</li>
-				<li>
-					<a href="#" class="nav-link py-3 text-white border-bottom"
+						<i class="fas fa-lg fa-truck-moving text-info-50"></i> <br /> <small>Proveedores</small>
+					</a></li>
+				<li><a href="#" class="nav-link py-3 text-white border-bottom"
 						aria-current="page" title="Home" data-bs-toggle="tooltip"
 						data-bs-placement="right">
-						<i class="fas fa-lg fa-money-bill-wave text-info-50"></i>
-						<br />
+						<i class="fas fa-lg fa-money-bill-wave text-info-50"></i> <br />
 						<small>Gastos</small>
-					</a>
-				</li>
-				<li>
-					<a href="#" class="nav-link py-3 text-white border-bottom"
+					</a></li>
+				<li><a href="#" class="nav-link py-3 text-white border-bottom"
 						aria-current="page" title="Home" data-bs-toggle="tooltip"
 						data-bs-placement="right">
-						<i class="fas fa-lg fa-id-badge text-info-50"></i>
-						<br />
-						<small>Usuarios</small>
-					</a>
-				</li>
+						<i class="fas fa-lg fa-id-badge text-info-50"></i> <br /> <small>Usuarios</small>
+					</a></li>
 			</ul>
 		</div>
 
@@ -259,9 +216,9 @@
 		crossorigin="anonymous"></script>
 
 	<!-- DataTables BS5 Js -->
-		<script
+	<script
 		src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"
-		crossorigin="anonymous"></script> 
+		crossorigin="anonymous"></script>
 
 	<!-- Select 2 JS
 	<script
@@ -269,6 +226,9 @@
 		
 		<!-- Jquery-ui -->
 	<script th:src="@{/js/jquery-ui.min.js}"></script>
+	
+	<!-- Mascaras para inputs -->
+	<script th:src="@{/js/jquery.mask.min.js}"></script>
 
 	<!-- Sweet Alert 2 -->
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>

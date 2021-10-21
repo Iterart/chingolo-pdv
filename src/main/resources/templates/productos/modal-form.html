@@ -21,75 +21,75 @@
 						<div class="row row-cols-1">
 							<div class="col col-sm-6">
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="descrip"
+									<input type="text" class="form-control" id="descripcion"
 										placeholder="Título o nombre del producto" />
-									<label for="descrip" class="text-info">Descripción
+									<label for="descripcion" class="text-info">Descripción
 										(Título o nombre del producto)</label>
-									<div id="error-descrip"></div>
+									<div id="error-descripcion"></div>
 								</div>
 							</div>
 							<div class="col col-sm-6">
 								<div class="form-floating mb-3">
-									<select id="tipos_select" name="tipos_select"
+									<select id="categoria" name="categoria"
 										class="form-select">
 										<option th:each="c : ${categorias}" th:value="${c.numero}"
 											th:text="${c}"></option>
 									</select>
-									<label for="categorias_select" class="text-info">Categoría</label>
-									<div id="error-categorias"></div>
+									<label for="categoria" class="text-info">Categoría</label>
+									<div id="error-categoria"></div>
 								</div>
 							</div>
 						</div>
 						<div class="row row-cols-1">
 							<div class="col col-sm-12">
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="linkimg"
+									<input type="text" class="form-control" id="linkImagen"
 										placeholder="Link de la imagen" />
-									<label for="linkimg" class="text-info">Enlace de la
+									<label for="linkImagen" class="text-info">Enlace de la
 										imagen (copiar y pegar link)</label>
-									<div id="error-linkimg"></div>
+									<div id="error-linkImagen"></div>
 								</div>
 							</div>
 						</div>
 						<div class="row row-cols-1">
 							<div class="col col-sm-6">
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="codbar"
-										placeholder="código de barras" />
-									<label for="codbar" class="text-info">Código de barras</label>
-									<div id="error-codbar"></div>
+									<input type="text" class="form-control" id="codigoBarras"
+										placeholder="código de barras" data-mask="#0" data-mask-reverse="true" maxlength="13" />
+									<label for="codigoBarras" class="text-info">Código de barras</label>
+									<div id="error-codigoBarras"></div>
 								</div>
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="precos"
-										placeholder="Precio de costo" />
-									<label for="precos" class="text-info">Precio de costo</label>
-									<div id="error-precos"></div>
+									<input type="text" class="form-control" id="precioCosto"
+										placeholder="Precio de costo" data-mask="#.##0,00" data-mask-reverse="true" />
+									<label for="precioCosto" class="text-info">Precio de costo</label>
+									<div id="error-precioCosto"></div>
 								</div>
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="preven"
-										placeholder="Precio de venta" />
-									<label for="preven" class="text-info">Precio de venta</label>
-									<div id="error-preven"></div>
+									<input type="text" class="form-control" id="precioVenta"
+										placeholder="Precio de venta" data-mask="#.##0,00" data-mask-reverse="true" />
+									<label for="precioVenta" class="text-info">Precio de venta</label>
+									<div id="error-precioVenta"></div>
 								</div>
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="preesp"
-										placeholder="Precio especial" />
-									<label for="preesp" class="text-info">Precio especial</label>
-									<div id="error-preesp"></div>
+									<input type="text" class="form-control" id="precioEspecial"
+										placeholder="Precio especial" data-mask="#.##0,00" data-mask-reverse="true" />
+									<label for="precioEspecial" class="text-info">Precio especial</label>
+									<div id="error-precioEspecial"></div>
 								</div>
 								<div class="form-floating mb-3">
 									<input type="text" class="form-control" id="stock"
-										placeholder="Existencias (cantidad en stock)" />
+										placeholder="Existencias (cantidad en stock)" data-mask="#0" data-mask-reverse="true" />
 									<label for="stock" class="text-info">Existencias
 										(cantidad en stock)</label>
 									<div id="error-stock"></div>
 								</div>
 								<div class="form-floating mb-3">
-									<input type="text" class="form-control" id="stomin"
-										placeholder="Stock crítico (existencias mínimas)" />
-									<label for="stomin" class="text-info">Stock crítico
+									<input type="text" class="form-control" id="stockCritico"
+										placeholder="Stock crítico (existencias mínimas)" data-mask="#0" data-mask-reverse="true" />
+									<label for="stockCritico" class="text-info">Stock crítico
 										(existencias mínimas)</label>
-									<div id="error-stomin"></div>
+									<div id="error-stockCritico"></div>
 								</div>
 							</div>
 							<div class="col col-sm-6">
@@ -107,12 +107,12 @@
 								</div>
 							</div>
 						</div>
+						<input type="hidden" class="form-control" id="numero" name="numero" />
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-sm btn-secondary"
 							data-bs-dismiss="modal">Cancelar</button>
-						<button type="button" class="btn btn-sm btn-info text-white"
-							data-bs-dismiss="modal" onclick="guardarTarea();">Guardar</button>
+						<button id="btnGuardar" type="button" class="btn btn-sm btn-info text-white">Guardar</button>
 					</div>
 				</div>
 			</form>

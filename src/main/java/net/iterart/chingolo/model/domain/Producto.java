@@ -35,7 +35,7 @@ public class Producto implements Serializable {
 	private String codigoBarras;
 
 	@Column(name = "descr", nullable = false, unique = true, length = 110)
-	@NotBlank(message = "La descripción es requerida...")
+	@NotBlank(message = "La descripción es requerida")
 	private String descripcion;
 
 	@Column(name = "link_img", nullable = true, unique = false, length = 255)
