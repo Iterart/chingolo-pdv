@@ -37,7 +37,7 @@ $(document).ready(function() {
 			}
 		},
 		ajax: {
-			url: "/productos/datatable/list",
+			url: `${rootUrl}productos/datatable/list`,
 			data: "data"
 		},
 		columns: [
@@ -67,14 +67,21 @@ $(document).ready(function() {
 		}
 	});
 
-	// Marcar/desmarcar buttons al clikear en ordenacion
+	// Marcar/desmarcar buttons al clikear en ordenacion...
 	$("#products-table thead").on("click", "tr", function() {
 		$("#btn-edi").addClass("disabled");
 		$("#btn-del").addClass("disabled");
 	});
 
-	//Y también para el buscar...
+	//...y también para el buscar...
 	$(".dataTables_filter").on("click", () => {
+		$("#btn-edi").addClass("disabled");
+		$("#btn-del").addClass("disabled");
+		$("#products-table tbody tr").removeClass("selected");
+	});
+	
+	//...y también para la paginación...
+	$(".dataTables_paginate").on("click", () => {
 		$("#btn-edi").addClass("disabled");
 		$("#btn-del").addClass("disabled");
 		$("#products-table tbody tr").removeClass("selected");
@@ -193,7 +200,7 @@ $("#btn-edi").on("click", () => {
 
 		$.ajax({
 			method: "GET",
-			url: `/productos/form/${id}`,
+			url: `${rootUrl}productos/form/${id}`,
 			beforeSend: function() {
 
 				clearStyles();
@@ -269,7 +276,7 @@ $("#btnGuardar").on("click", function() {
 
 	$.ajax({
 		method: "POST",
-		url: "/productos/guardar",
+		url: `${rootUrl}/productos/guardar`,
 		data: producto,
 		beforeSend: function() {
 			// Remover errores previos...
@@ -345,7 +352,7 @@ $("#btn-del").on("click", function() {
 	}).then((result) => {
 		if (result.value) {
 			$.ajax({
-				url: '/productos/cambiar-estado/' + getProdId(),
+				url: `${rootUrl}productos/cambiar-estado/${getProdId()}`,
 				type: 'GET',
 			}).done(function(resp) {
 				table.ajax.reload(null, false); // user paging is not reset on reload

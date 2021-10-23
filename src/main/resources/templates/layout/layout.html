@@ -21,8 +21,8 @@
 <link
 	href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css"
 	rel="stylesheet" />
-	
-	<link
+
+<link
 	href="https://cdn.datatables.net/select/1.3.3/css/select.bootstrap5.min.css"
 	rel="stylesheet" />
 
@@ -193,7 +193,7 @@
 		<!-- ./Messages -->
 
 		<!-- MAIN CONTENT -->
-		<div layout:fragment="corpo" class="container-fluid ">
+		<div layout:fragment="corpo" class="container-fluid mb-4">
 			<div>Conteúdo principal das páginas</div>
 		</div>
 
@@ -223,7 +223,9 @@
 	<script
 		src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"
 		crossorigin="anonymous"></script>
-	<script src="https://cdn.datatables.net/select/1.3.3/js/select.bootstrap5.min.js" crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.datatables.net/select/1.3.3/js/select.bootstrap5.min.js"
+		crossorigin="anonymous"></script>
 
 	<!-- Select 2 JS
 	<script
@@ -231,7 +233,7 @@
 		
 		<!-- Jquery-ui -->
 	<script th:src="@{/js/jquery-ui.min.js}"></script>
-	
+
 	<!-- Mascaras para inputs -->
 	<script th:src="@{/js/jquery.mask.min.js}"></script>
 
@@ -239,6 +241,9 @@
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 	<!-- 	MEUS JS -->
+	<script type="text/javascript">
+		const rootUrl = "/";
+	</script>
 	<script th:replace=":: js"></script>
 	<script>
 		setInterval('cerrar()', 5000);
