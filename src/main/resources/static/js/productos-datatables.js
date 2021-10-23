@@ -50,9 +50,14 @@ $(document).ready(function() {
 			{ data: "codigoBarras" },
 			{ data: "descripcion" },
 			{ data: "categoria.nombre" },
-			{ data: "precioVenta" },
+			{
+				data: "precioVenta",
+				render: (precio) => {
+					return "$" + parseFloat(precio).toFixed(2);
+				}
+			},
 			{ data: "stock" }
-			
+
 		],
 		rowCallback: function(row, data, dataIndex) {
 			if (data["activo"] == false) {
@@ -61,7 +66,42 @@ $(document).ready(function() {
 			}
 		}
 	});
+
+	// Marcar/desmarcar buttons al clikear en ordenacion
+	$("#products-table thead").on("click", "tr", function() {
+		$("#btn-edi").addClass("disabled");
+		$("#btn-del").addClass("disabled");
+	});
+
+	//Y también para el buscar...
+	$(".dataTables_filter").on("click", () => {
+		$("#btn-edi").addClass("disabled");
+		$("#btn-del").addClass("disabled");
+		$("#products-table tbody tr").removeClass("selected");
+	});
+
+	// Marcar/desmarcar lineas
+	$("#products-table tbody").on("click", "tr", function() {
+		if ($(this).hasClass("selected")) {
+			$(this).removeClass("selected");
+			$("#btn-edi").addClass("disabled");
+			$("#btn-del").addClass("disabled");
+		} else {
+			$("tr.selected").removeClass("selected");
+			$(this).addClass("selected");
+			$("#btn-edi").removeClass("disabled");
+			$("#btn-del").removeClass("disabled");
+		}
+
+		if ($(this).hasClass("tachado")) {
+			$("#btn-del").html("Habilitar");
+		} else {
+			$("#btn-del").html("Quitar");
+		}
+	});
 });
+
+
 
 const clearStyles = () => {
 	// Limpiar form de cargas anteriores...
@@ -76,6 +116,40 @@ const clearInputs = () => {
 		$(this).val("");
 	});
 }
+
+function getProdId() {
+	return table.row(table.$("tr.selected")).data().numero;
+}
+
+function getProdDescrip() {
+	return table.row(table.$("tr.selected")).data().descripcion;
+}
+
+function isSelectedRow() {
+	trow = table.row(table.$("tr.selected"));
+	return trow.data() !== undefined;
+}
+
+function getEstado() {
+	return table.row(table.$("tr.selected")).data().activo;
+}
+
+// Alterar la imagen en el <img> del modal
+$("#linkImagen").on("keyup", function() {
+	var link = $(this).val();
+
+	/*if (link.length > 255) {
+		Swal.fire({
+			icon: 'error',
+			title: 'Oops...',
+			text: 'El link es demasiado largo...',
+			footer: 'Busque otro enlace'
+		});
+		//return;
+	}*/
+
+	$("#edt_img").attr("src", link);
+});
 
 /* 
  *
@@ -106,13 +180,67 @@ $("#btn-new").on("click", () => {
 
 	//Abrir bs5 dialog...
 	let tareaModal = new bootstrap.Modal(document.getElementById("productosModal"), { backdrop: 'static', keyboard: false });
-	tareaModal.show()
+	tareaModal.show();
 });
 
 //
 //Abrir form editar:
 //
 
+$("#btn-edi").on("click", () => {
+	if (isSelectedRow()) {
+		var id = getProdId();
+
+		$.ajax({
+			method: "GET",
+			url: `/productos/form/${id}`,
+			beforeSend: function() {
+
+				clearStyles();
+				clearInputs();
+
+				//Titulo...
+				$("#titleModal").text("Ver o Modificar Producto");
+
+				//Abrir bs5 dialog...
+				let tareaModal = new bootstrap.Modal(document.getElementById("productosModal"), { backdrop: 'static', keyboard: false });
+				tareaModal.show();
+			},
+			success: function(data) {
+				$("#numero").val(data.numero);
+				$("#codigoBarras").val(data.codigoBarras);
+				$("#descripcion").val(data.descripcion);
+				$("#categoria").val(data.categoria.numero);
+				$("#stock").val(data.stock);
+				$("#stockCritico").val(data.stockCritico);
+				$("#linkImagen").val(data.linkImagen);
+				$("#edt_img").attr("src", data.linkImagen);
+				$("#precioVenta").val(data.precioVenta.toLocaleString("es-AR", {
+					minimumFranctionDigits: 2,
+					maximumFranctionDigits: 2
+				}));
+				$("#precioEspecial").val(data.precioEspecial.toLocaleString("es-AR", {
+					minimumFranctionDigits: 2,
+					maximumFranctionDigits: 2
+				}));
+				$("#precioCosto").val(data.precioCosto.toLocaleString("es-AR", {
+					minimumFranctionDigits: 2,
+					maximumFranctionDigits: 2
+				}));
+			},
+			error: function(xhr) {
+				//alert("Ocurrió un error..." + xhr.status.text);
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: 'No se pudo comunicar con el servidor!',
+					footer: 'Verifique su conexión a internet o comuníquese con el administrador'
+				});
+			}
+		});
+
+	}
+});
 
 //
 // Hacer el submit del producto
@@ -128,7 +256,7 @@ $("#btnGuardar").on("click", function() {
 	producto.categoria = $("#categoria").val();
 	producto.stock = $("#stock").val();
 	producto.stockCritico = $("#stockCritico").val();
-	producto.linkImagen = $("#linkImagen").attr("src");
+	producto.linkImagen = $("#linkImagen").val();
 	producto.precioVenta = $("#precioVenta").val();
 	producto.precioEspecial = $("#precioEspecial").val();
 	producto.precioCosto = $("#precioCosto").val();
@@ -150,13 +278,13 @@ $("#btnGuardar").on("click", function() {
 		success: function() {
 
 			$("#productosModal").modal("hide");
-			table.ajax.reload();
+			table.ajax.reload(null, false); // user paging is not reset on reload
 			Swal.fire({
 				title: 'Éxito!',
 				text: 'Producto guardado.',
 				icon: 'success',
 				confirmButtonText: 'Aceptar'
-			})
+			});
 			/*.then((result) => {
 				if (result.isConfirmed) {
 					table.ajax.reload();
@@ -177,7 +305,7 @@ $("#btnGuardar").on("click", function() {
 					title: 'Oops...',
 					text: 'Datos erróneos o faltantes!',
 					footer: 'Verifique los mensajes de error'
-				})
+				});
 			},
 			404: function(xhr) {
 				console.log("Status Error: " + xhr.status);
@@ -186,11 +314,52 @@ $("#btnGuardar").on("click", function() {
 					title: 'Oops...',
 					text: 'No se pudo comunicar con el servidor!',
 					footer: 'Verifique su conexión a internet o comuníquese con el administrador'
-				})
+				});
 			}
 		}
 	});
 
+	$("#btn-edi").addClass("disabled");
+	$("#btn-del").addClass("disabled");
+
+});
+
+// Botón de borrar:
+//
+$("#btn-del").on("click", function() {
+
+	var accion = getEstado() == true ? "DESHABILITAR" : "HABILITAR";
+	var estado = getEstado() == true ? "DESHABILITADO" : "HABILITADO";
+	var prod = getProdDescrip();
+
+	Swal.fire({
+		icon: 'warning',
+		title: '¡Atención!',
+		text: getEstado() ?
+			"El producto '" + prod + "' no estará disponible para las ventas. ¿Desea continuar?"
+			: "Está por " + accion + " el producto '" + prod + "'. ¿Desea continuar?",
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Confirmar'
+	}).then((result) => {
+		if (result.value) {
+			$.ajax({
+				url: '/productos/cambiar-estado/' + getProdId(),
+				type: 'GET',
+			}).done(function(resp) {
+				table.ajax.reload(null, false); // user paging is not reset on reload
+			});
+			Swal.fire(
+				'¡Confirmado!',
+				'Producto ' + estado + ".",
+				'success'
+			)
+		}
+	});
+
+	$("#btn-edi").addClass("disabled");
+	$("#btn-del").addClass("disabled");
 });
 
 

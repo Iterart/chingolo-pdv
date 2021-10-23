@@ -9,6 +9,6 @@ public class HomeController {
 	@GetMapping({"/", "/home"})
 	public String home() {
 		
-		return "template";
+		return "redirect:/productos/listado";
 	}
 }

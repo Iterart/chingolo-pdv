@@ -13,7 +13,7 @@
 			<form id="form" action="#">
 				<div class="modal-content">
 					<div class="modal-header text-white modal-header">
-						<h5>Nuevo Producto</h5>
+						<h5 id="titleModal"></h5>
 						<button type="button" class="btn btn-close"
 							data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
@@ -95,7 +95,7 @@
 							<div class="col col-sm-6">
 								<img id="edt_img" class="card-img-top"
 									th:src="@{/img/producto-sin-imagen.png}"
-									height="90%" onfocus="$('#edt_img').select();" />
+									height="90%" onfocus="$('#linkImagen').select();" />
 							</div>
 						</div>
 						<div class="row row-cols-1">
@@ -111,7 +111,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-sm btn-secondary"
-							data-bs-dismiss="modal">Cancelar</button>
+							data-bs-dismiss="modal">Cerrar</button>
 						<button id="btnGuardar" type="button" class="btn btn-sm btn-info text-white">Guardar</button>
 					</div>
 				</div>

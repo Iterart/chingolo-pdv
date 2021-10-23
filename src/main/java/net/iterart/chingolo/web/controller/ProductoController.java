@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -51,6 +52,13 @@ public class ProductoController {
 		return ResponseEntity.ok(data);
 	}
 	
+	@GetMapping("/form/{id}")
+	public ResponseEntity<?> preEdicion(@PathVariable Long id) {
+		Producto p = productoService.buscarPorId(id);
+
+		return ResponseEntity.ok(p);
+	}
+	
 	@PostMapping("/guardar")
 	public ResponseEntity<?> guardar(@Valid Producto producto, BindingResult result) {
 
@@ -62,10 +70,22 @@ public class ProductoController {
 			return ResponseEntity.unprocessableEntity().body(errors);
 		}
 
+		producto.setActivo(true);
 		productoService.guardar(producto);
 		
 		return ResponseEntity.ok().build();
 	}
+	
+	@GetMapping("/cambiar-estado/{id}")
+	public ResponseEntity<?> cambiarEstado(@PathVariable("id") Long id) {
+
+		Producto p = productoService.buscarPorId(id);
+		p.setActivo(!p.isActivo());
+		productoService.guardar(p);
+
+		return ResponseEntity.ok().build();
+	}
+
 	
 	@ModelAttribute("categorias")
 	public List<Categoria> getCategorias() {

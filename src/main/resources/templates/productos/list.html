@@ -11,18 +11,18 @@
 
 		<div class="text-white etiqueta">
 			<div class="row">
-				<div class="col-sm-9">
+				<div class="col-sm-8">
 					<span class="text-responsive"> <span
 						th:text="#{productos.list.titulo}"></span>
 					</span>
 				</div>
-				<div class="col-sm-3 text-right">
+				<div class="col-sm-4 float-end">
 					<a id="btn-new" class="btn btn-info btn-sm text-white sombra-boton" style="background-color: #61DAFB;"
 						th:text="Nuevo"></a>
 					<a id="btn-edi" class="btn btn-deshab btn-sm text-white sombra-boton" 
-						th:text="Editar"></a>
+						th:text="'Ver/Editar'"></a>
 					<a id="btn-del" class="btn btn-deshab btn-sm text-white sombra-boton" 
-						th:text="Eliminar"></a>
+						th:text="Quitar"></a>
 				</div>
 			</div>
 		</div>
@@ -30,7 +30,7 @@
 		<div class="row mt-3">
 			<div class="col-12">
 				<table id="products-table"
-					class="table table-bordered table-hover table-striped" style="width:100%">
+					class="display nowrap table table-bordered table-striped" style="width:100%">
 					<thead>
 						<tr style="background-color: #494F5C;" class="text-light">
 							<th scope="col" width="10px">Imagen</th>

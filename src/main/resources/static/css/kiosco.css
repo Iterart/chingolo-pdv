@@ -11,3 +11,12 @@
 .nav-border {
 	border-radius: 30px;
 }
+
+.tachado {
+    font-style: italic;
+    text-decoration: line-through;
+    text-decoration-color: #1c7430;
+    color: inactivecaption;
+    filter: grayscale(1);
+    height: 10px;
+}
