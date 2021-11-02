@@ -44,7 +44,7 @@ $(document).ready(function() {
 			{
 				data: "linkImagen",
 				"render": function(data, type, row) {
-					return '<img src="' + data + '" width="100px" />';
+					return '<img src="' + (data !== "" ? data : "../img/producto-sin-imagen.png") + '" width="100px" />';
 				}
 			},
 			{ data: "codigoBarras" },
@@ -122,6 +122,7 @@ const clearInputs = () => {
 	$("#form :input").each(function() {
 		$(this).val("");
 	});
+	//$("#edt_img").attr("src", "");
 }
 
 function getProdId() {
@@ -143,7 +144,7 @@ function getEstado() {
 
 // Alterar la imagen en el <img> del modal
 $("#linkImagen").on("keyup", function() {
-	var link = $(this).val();
+	let link = $(this).val();
 
 	/*if (link.length > 255) {
 		Swal.fire({
@@ -169,7 +170,7 @@ $("#linkImagen").on("keyup", function() {
 //
 $("#btn-new").on("click", () => {
 
-	var link = "/img/producto-sin-imagen.png";
+	let link = "/img/producto-sin-imagen.png";
 
 	clearStyles();
 	clearInputs();
@@ -178,7 +179,8 @@ $("#btn-new").on("click", () => {
 	$("#titleModal").text("Nuevo Producto");
 
 	$("#descripcion").select();
-	$("#linkImagen").attr("src", link);
+	$("#linkImagen").val("");
+	$("#edt_img").attr("src", link);
 	$("#precioCosto").val(0.00);
 	$("#precioVenta").val(0.00);
 	$("#precioEspecial").val(0.00);
@@ -221,7 +223,7 @@ $("#btn-edi").on("click", () => {
 				$("#stock").val(data.stock);
 				$("#stockCritico").val(data.stockCritico);
 				$("#linkImagen").val(data.linkImagen);
-				$("#edt_img").attr("src", data.linkImagen);
+				$("#edt_img").attr("src", (data.linkImagen !== "" ? data.linkImagen : "../img/producto-sin-imagen.png"));
 				$("#precioVenta").val(data.precioVenta.toLocaleString("es-AR", {
 					minimumFranctionDigits: 2,
 					maximumFranctionDigits: 2
@@ -276,7 +278,7 @@ $("#btnGuardar").on("click", function() {
 
 	$.ajax({
 		method: "POST",
-		url: `${rootUrl}/productos/guardar`,
+		url: `${rootUrl}productos/guardar`,
 		data: producto,
 		beforeSend: function() {
 			// Remover errores previos...
