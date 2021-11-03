@@ -1,3 +1,11 @@
+/* Roles */
+INSERT INTO roles (nombre) VALUES ('ROLE_ADMIN');
+INSERT INTO roles (nombre) VALUES ('ROLE_CAJERO');
+
+/* Usuarios - en las pruebas todas las claves son 'usuario' */
+INSERT INTO `usuarios` (`activo`, `email`, `password`, `token_exp`, `rol_id`) VALUES ('1', 'usuario', '$2a$10$nmsnELze.Ca7dMnsbfGIuuczJlKMAk9SGCkgDczmosj91zCAMsFoO', '0', '1');
+INSERT INTO `usuarios` (`activo`, `email`, `password`, `token_exp`, `rol_id`) VALUES ('1', 'invitado', '$2a$10$nmsnELze.Ca7dMnsbfGIuuczJlKMAk9SGCkgDczmosj91zCAMsFoO', '0', '2');
+
 INSERT INTO categorias (cat) VALUES ('Alimenticios');
 INSERT INTO categorias (cat) VALUES ('Bebidas');
 INSERT INTO categorias (cat) VALUES ('Indumentaria');

@@ -62,7 +62,7 @@
 <body>
 
 
-	<!-- Barra de NavegaciÛn -->
+	<!-- Barra de NavegaciÔøΩn -->
 	<nav class="navbar navbar-expand-sm navbar-dark p-3"
 		style="background-color: #494F5C; height: 2.9rem;">
 		<!-- Brand -->
@@ -72,12 +72,12 @@
 				<img alt="logo" th:src="@{/img/logo.png}" width="8%" height="8%"
 					fill="none" stroke="currentColor" stroke-width="2"
 					stroke-linecap="round" stroke-linejoin="round"
-					class="d-flex my-auto" /> <span
-					class="nav-link active text-responsive" aria-current="page">
+					class="d-flex my-auto" />
+				<span class="nav-link active text-responsive" aria-current="page">
 					<span th:text="#{titulo}" class="text-white"
-					style="font-stretch: extra-condensed; font-weight: 800;"></span> <span
-					th:text="#{subtitulo}"
-					style="color: #61DAFB; font-stretch: extra-condensed; font-weight: 800;"></span>
+						style="font-stretch: extra-condensed; font-weight: 800;"></span>
+					<span th:text="#{subtitulo}"
+						style="color: #61DAFB; font-stretch: extra-condensed; font-weight: 800;"></span>
 				</span>
 
 			</a>
@@ -104,8 +104,13 @@
 						aria-labelledby="navbarDropdownMenuLink">
 							<li><a class="dropdown-item" href="#">Action</a></li>
 							<li><a class="dropdown-item" href="#">Another action</a></li>
-							<li><a class="dropdown-item" href="#">Something else
-									here</a></li>
+							<li><form id="logoutForm" th:action="@{/logout}"
+									method="post">
+									<a class="dropdown-item" href="#"
+										onclick="document.getElementById('logoutForm').submit();">
+										<i class="fas fa-sign-out-alt"></i> &nbsp;Cerrar Sesi√≥n
+									</a>
+								</form></li>
 					</ul></li>
 				</ul>
 			</div>
@@ -167,20 +172,22 @@
 			role="alert" th:if="${success != null}">
 			<button type="button" class="btn-close" data-bs-dismiss="alert"
 				aria-label="Close"></button>
-			<i class="fas fa-check-circle"></i> &nbsp; <span th:text="${success}"></span>
+			<i class="fas fa-check-circle"></i> &nbsp;
+			<span th:text="${success}"></span>
 		</div>
 		<div class="alert alert-warning alert-dismissible fade show"
 			role="alert" th:if="${warning != null}">
 			<button type="button" class="btn-close" data-bs-dismiss="alert"
 				aria-label="Close"></button>
-			<i class="fas fa-info-circle"></i> &nbsp; <span th:text="${warning}"></span>
+			<i class="fas fa-info-circle"></i> &nbsp;
+			<span th:text="${warning}"></span>
 		</div>
 		<div class="alert alert-danger alert-dismissible fade show"
 			role="alert" th:if="${danger != null}">
 			<button type="button" class="btn-close" data-bs-dismiss="alert"
 				aria-label="Close"></button>
-			<i class="fas fa-exclamation-triangle"></i> &nbsp; <span
-				th:text="${danger}"></span>
+			<i class="fas fa-exclamation-triangle"></i> &nbsp;
+			<span th:text="${danger}"></span>
 		</div>
 		<div id="dangerMsg"
 			class="alert alert-danger alert-dismissible fade show" hidden="true"

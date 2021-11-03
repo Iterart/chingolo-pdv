@@ -125,6 +125,23 @@ const clearInputs = () => {
 	//$("#edt_img").attr("src", "");
 }
 
+const showImage = () => {
+	
+	/*if (link.length > 255) {
+		Swal.fire({
+			icon: 'error',
+			title: 'Oops...',
+			text: 'El link es demasiado largo...',
+			footer: 'Busque otro enlace'
+		});
+		//return;
+	}*/
+	
+	let link = $("#linkImagen").val();
+
+	$("#edt_img").attr("src", link);
+}
+
 function getProdId() {
 	return table.row(table.$("tr.selected")).data().numero;
 }
@@ -144,19 +161,11 @@ function getEstado() {
 
 // Alterar la imagen en el <img> del modal
 $("#linkImagen").on("keyup", function() {
-	let link = $(this).val();
+	showImage();
+});
 
-	/*if (link.length > 255) {
-		Swal.fire({
-			icon: 'error',
-			title: 'Oops...',
-			text: 'El link es demasiado largo...',
-			footer: 'Busque otro enlace'
-		});
-		//return;
-	}*/
-
-	$("#edt_img").attr("src", link);
+$("#linkImagen").on("change", function() {
+	showImage();
 });
 
 /* 
